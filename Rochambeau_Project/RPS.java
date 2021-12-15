@@ -43,7 +43,7 @@ public class RPS {
     // Precondition: p1Choice and p2Choice are only "r", "p", or "s"
     public void determineScore(String p1Choice, String p2Choice) {
         if(!p1Choice.equals(p2Choice)) {
-            String result;
+            String result = "";
             switch(p1Choice) {
                 case "r":
                     if(p2Choice.equals("p")) {
@@ -74,6 +74,7 @@ public class RPS {
                     break;
             }
             System.out.println("Player 1 Score: " + scores[0] + "\nPLayer 2/Computer Score: " + scores[1]);
+            System.out.println(result);
             System.out.println();
             cRound++;
         } else {
