@@ -9,18 +9,35 @@ class Game {
         
         boolean ready;
         do {
-            System.out.println("Ready to play Rock Paper Scissors? [y/n]");
+            System.out.println("Ready to play a game of Rock Paper Scissors? [y/n]");
             ready = cinput.yesNo(input.nextLine());
+
             if(ready) {
-                System.out.println("Would you like instructions for the this game? [y/n]");
+                RPS gamer = new RPS();
+                System.out.println("Would you like instructions for this game? [y/n]");
+
                 if(cinput.yesNo(input.nextLine())) {
-                    /* To be implemented; Provide instructions on how to play this version of RPS
-                       then re-ask if they are ready to play the game */
+                    System.out.println("You and another player or the computer chooses between playing a rock [r], paper [p], or scissors [s] \nrock beats scissors, scissors beats paper, and paper beats rock. \nYou get to choose how many round to play and whether you'd like to play against another player or the computer");
+                    System.out.println();
                 }
-                /* To be implemented */
+
+                System.out.println("How many rounds would you like to play?");
+                int numRounds = input.nextInt();
+                gamer.setRounds(numRounds);
+                System.out.println("Player vs Player or Player vs Computer? [pvp/pvc]");
+                String type = input.nextLine();
+                type = input.nextLine();
+                gamer.setGameType(cinput.equals(type, "pvp"));
+
+                gamer.playGame();
+
+                System.out.println("Ready to play another game of Rock Paper Scissors?");
+                ready = cinput.yesNo(input.nextLine());
+                
             } else {
                 System.out.println("Would you like to quit the game? [y/n]");
                 if(cinput.yesNo(input.nextLine())) break;
+                ready = true;
             }
         } while(ready);
 
