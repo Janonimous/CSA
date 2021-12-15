@@ -12,6 +12,7 @@ public class CustomInput {
         this.caseSensitive = caseSensitive;
     }
 
+    // Harder to implement as console inputs are stored as strings
     public boolean equals(char c, char q) {
         char comparable = c;
         char compared = q;
@@ -32,11 +33,28 @@ public class CustomInput {
         return (comparable.equals(compared));
     }
 
+    public boolean multipleEquals(String s, String[] qa) {
+        boolean result = false;
+        for(String q: qa) {
+            if(s.equals(q)) result = true;
+        }
+        return result;
+    }
+
     public boolean yesNo(char c) {
         return equals(c, 'y');
     }
 
+    // Cleanse up for later use
     public boolean yesNo(String s) {
-        return equals(s, "yes") || equals(s, "y");
+        boolean answ = false;
+        boolean valid = equals(s, "no") || equals(s, "n") || equals(s, "yes") || equals(s, "y");
+        do {
+            if(equals(s, "yes") || equals(s, "y")) answ = true;
+            else if(equals(s, "no") || equals(s, "n")) answ = false;
+            if(!valid) System.out.println("Please enter y, yes, n, or no");
+        } while(!valid);
+        
+        return answ;
     }
 }
